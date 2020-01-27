@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.tools;
+package com.example.parcels_useres.UI.tools;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.example.parcels_useres.R;
 
 public class ToolsFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private com.example.parcels_useres.ui.tools.ToolsViewModel toolsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
+                ViewModelProviders.of(this).get(com.example.parcels_useres.ui.tools.ToolsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tools, container, false);
         final TextView textView = root.findViewById(R.id.text_tools);
         toolsViewModel.getText().observe(this, new Observer<String>() {

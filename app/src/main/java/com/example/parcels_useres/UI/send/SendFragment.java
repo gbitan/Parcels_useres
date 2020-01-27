@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.send;
+package com.example.parcels_useres.UI.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.example.parcels_useres.R;
 
 public class SendFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private com.example.parcels_useres.ui.send.SendViewModel sendViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
+                ViewModelProviders.of(this).get(com.example.parcels_useres.ui.send.SendViewModel.class);
         View root = inflater.inflate(R.layout.fragment_send, container, false);
         final TextView textView = root.findViewById(R.id.text_send);
         sendViewModel.getText().observe(this, new Observer<String>() {
