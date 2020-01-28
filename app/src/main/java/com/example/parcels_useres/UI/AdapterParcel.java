@@ -30,6 +30,10 @@ public class AdapterParcel extends androidx.recyclerview.widget.RecyclerView.Ada
         this.parcels = parcels;
     }
 
+    public AdapterParcel(Context baseContext) {
+        this.baseContext = baseContext;
+    }
+
     @NonNull
     @Override
     public ParcelDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,6 +59,10 @@ public class AdapterParcel extends androidx.recyclerview.widget.RecyclerView.Ada
     @Override
     public int getItemCount() {
         return parcels.size();
+    }
+
+    public void setParcels(List<Parcel> parcels) {
+        this.parcels = parcels;
     }
 
     public class ParcelDetailsViewHolder extends RecyclerView.ViewHolder{
