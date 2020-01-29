@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.send;
+package com.example.parcels_useres.UI.send;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

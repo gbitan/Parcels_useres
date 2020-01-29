@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.gallery;
+package com.example.parcels_useres.UI.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.example.parcels_useres.R;
 
 public class GalleryFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private com.example.parcels_useres.UI.gallery.GalleryViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+                ViewModelProviders.of(this).get(com.example.parcels_useres.UI.gallery.GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         galleryViewModel.getText().observe(this, new Observer<String>() {

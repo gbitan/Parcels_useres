@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.slideshow;
+package com.example.parcels_useres.UI.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.example.parcels_useres.R;
 
 public class SlideshowFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private com.example.parcels_useres.UI.slideshow.SlideshowViewModel slideshowViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
+                ViewModelProviders.of(this).get(com.example.parcels_useres.UI.slideshow.SlideshowViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
         slideshowViewModel.getText().observe(this, new Observer<String>() {

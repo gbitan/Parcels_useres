@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.tools;
+package com.example.parcels_useres.UI.tools;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
