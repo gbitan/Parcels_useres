@@ -21,6 +21,8 @@ import com.example.parcels_useres.UI.ParcelsAdapter;
 
 import java.util.List;
 
+import java.util.List;
+
 public class MyParcelsFragment extends Fragment {
 
     private MyParcelsViewModel myParcelsViewModel;
@@ -48,7 +50,12 @@ public class MyParcelsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
+<<<<<<< HEAD
       //  mAdapter = new AdapterParcel(getContext());
+=======
+        mAdapter = new AdapterParcel(getContext());
+
+>>>>>>> master
         recyclerView.setAdapter(mAdapter);
 
         myParcelsViewModel = ViewModelProviders.of(this).get(MyParcelsViewModel.class);
@@ -59,6 +66,7 @@ public class MyParcelsFragment extends Fragment {
             }
         });
     }
+<<<<<<< HEAD
  /*   public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myParcelsViewModel =
@@ -73,4 +81,7 @@ public class MyParcelsFragment extends Fragment {
         });
         return root;
     }*/
+=======
+
+>>>>>>> master
 }
