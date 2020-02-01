@@ -23,42 +23,19 @@ public class Parcel {
         location = new Location("");
     }
 
-    public Parcel(String pkind, boolean isFragile, float w, Location location, String name, String address,
-                  String phone,
-                  String email, ParcelStatus parcelStatus) {
+
+    public Parcel(ParcelKind parcelKind, boolean isFragile, Weight w, Location location,
+                  String name, String address, String phone, String email, ParcelStatus parcelStatus) {
         id=-1;
-
+        this.parcelKind = parcelKind;
         this.isFragile = isFragile;
-        if (w<0.5)
-            this.w=Weight.LESS_THEN_500_G;
-        if (w<1&&w>=0.5)
-            this.w= Weight.LESS_THEN_KG;
-        if (w<5&&w>=1)
-            this.w=Weight.LESS_THEN_5_KG;
-        if (w>=5)
-            this.w=Weight.LESS_THEN_20_KG;
-
+        this.w = w;
         this.location = location;
         this.name = name;
         this.address = address;
-
-
-        switch (pkind){
-            case "envelope":
-                parcelKind = Parcel.ParcelKind.ENVELOPE;
-                break;
-            case "littel parcel":
-                parcelKind =Parcel.ParcelKind.LITTEL_PARCEL;
-                break;
-            case "big parcel":
-                parcelKind =Parcel.ParcelKind.BIG_PARCEL;
-                break;
-        }
-
         this.phone = phone;
         this.email = email;
         this.parcelStatus = parcelStatus;
-
     }
 
 

@@ -6,12 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.parcels_useres.Data.models.Parcel;
-import com.example.parcels_useres.Data.reppositories.ParcelRepository;
-
-import java.util.List;
+import com.example.parcels_useres.Data.models.ParcelBuilder;
 
 public class HomeViewModel extends AndroidViewModel {
   /*  private ParcelRepository repository;
@@ -36,7 +33,7 @@ public class HomeViewModel extends AndroidViewModel {
     public HomeViewModel(@NonNull Application application) {
       super(application);
         mText = new MutableLiveData<>();
-        Parcel p = new Parcel();
+        Parcel p = new ParcelBuilder().createParcel();
         p.setName("avi");
         p.setEmail("avi@exemple.com");
         p.setFragile(true);

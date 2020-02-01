@@ -50,12 +50,12 @@ public class MyParcelsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-<<<<<<< HEAD
-      //  mAdapter = new AdapterParcel(getContext());
-=======
-        mAdapter = new AdapterParcel(getContext());
 
->>>>>>> master
+      //  mAdapter = new AdapterParcel(getContext());
+
+        mAdapter = new ParcelsAdapter(getContext());
+
+
         recyclerView.setAdapter(mAdapter);
 
         myParcelsViewModel = ViewModelProviders.of(this).get(MyParcelsViewModel.class);
@@ -66,7 +66,7 @@ public class MyParcelsFragment extends Fragment {
             }
         });
     }
-<<<<<<< HEAD
+
  /*   public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myParcelsViewModel =
@@ -81,7 +81,7 @@ public class MyParcelsFragment extends Fragment {
         });
         return root;
     }*/
-=======
 
->>>>>>> master
+
+
 }

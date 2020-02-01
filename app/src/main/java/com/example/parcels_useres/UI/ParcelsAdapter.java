@@ -26,10 +26,6 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
         this.baseContext = baseContext;
     }
 
-    public AdapterParcel(Context baseContext) {
-        this.baseContext = baseContext;
-    }
-
     @NonNull
     @Override
     public ParcelHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,7 +40,7 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
         holder.textViewStatus.setText(parcel.getParcelStatus().name());
         holder.textViewType.setText(parcel.getParcelKind().name());
         holder.textViewWeight.setText(parcel.getW().name());
-       // holder.textViewAdress.setText(Utils.getPlace(baseContext, parcel.getLocation()));
+     //   holder.textViewAdress.setText(Utils.getPlace(baseContext, parcel.getLocation()));
     }
 
     @Override
@@ -52,7 +48,6 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
         return parcels.size();
     }
 
-<<<<<<< HEAD:app/src/main/java/com/example/parcels_useres/UI/ParcelsAdapter.java
     public Parcel getParcelAt(int position) {
         return parcels.get(position);
     }
@@ -64,14 +59,6 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
 
     public class ParcelHolder extends RecyclerView.ViewHolder {
         TextView textViewStatus, textViewType, textViewWeight, textViewAdress;
-=======
-    public void setParcels(List<Parcel> parcels) {
-        this.parcels = parcels;
-    }
-
-    public class ParcelDetailsViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewStatus, textViewType, textViewWeight,textViewName;
->>>>>>> master:app/src/main/java/com/example/parcels_useres/UI/AdapterParcel.java
         ImageView imageViewType;
 
         public ParcelHolder(@NonNull View itemView) {
