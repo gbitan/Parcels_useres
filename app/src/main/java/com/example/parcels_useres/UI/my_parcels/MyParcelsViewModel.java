@@ -14,11 +14,17 @@ import java.util.List;
 public class MyParcelsViewModel extends AndroidViewModel {
 private ParcelRepository repository;
     private LiveData<List<Parcel>> mParcels;
+    private MutableLiveData<String> mText;
 
     public MyParcelsViewModel(@NonNull Application application) {
         super(application);
         repository=new ParcelRepository(getApplication());
         mParcels = repository.getAllParcels();
+        mText = new MutableLiveData<>();
+        if (mParcels.getValue() != null)
+            mText.setValue((mParcels.getValue()).get(0).getName());
+        else
+            mText.setValue("no parcels found");
     }
 
 

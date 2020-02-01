@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.parcels_useres.ui.home.HomeFragment"
-        android:label="@string/menu_MyParcels"
+        android:name="com.example.parcels_useres.UI.slideshow.SlideshowFragment"
+        android:label="@string/menu_FriendsParcels"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.parcels_useres.ui.gallery.GalleryFragment"
-        android:label="@string/menu_FriendsParcels"
+        android:name="com.example.parcels_useres.UI.my_parcels.MyParcelsFragment"
+        android:label="@string/menu_MyParcels"
         tools:layout="@layout/fragment_my_parcel" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.parcels_useres.ui.slideshow.SlideshowFragment"
+        android:name="com.example.parcels_useres.UI.share.ShareFragment"
         android:label="@string/menu_History"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.example.parcels_useres.ui.tools.ToolsFragment"
+        android:name="com.example.parcels_useres.UI.tools.ToolsFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.parcels_useres.ui.share.ShareFragment"
+        android:name="com.example.parcels_useres.UI.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.parcels_useres.ui.send.SendFragment"
+        android:name="com.example.parcels_useres.UI.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 </navigation>

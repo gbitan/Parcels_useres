@@ -1,4 +1,4 @@
-package com.example.parcels_useres.ui.slideshow;
+package com.example.parcels_useres.UI.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import com.example.parcels_useres.R;
 
 public class SlideshowFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private com.example.parcels_useres.UI.slideshow.SlideshowViewModel slideshowViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
