@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.parcels_useres.UI.slideshow.SlideshowFragment"
+        android:name="com.example.parcels_useres.UI.home.HomeFragment"
         android:label="@string/menu_FriendsParcels"
         tools:layout="@layout/fragment_home" />
 

@@ -24,16 +24,17 @@ public class ParcelRepository {
    // private final LiveData<List<Parcel>> allParcels;
     private  MutableLiveData<List<Parcel>> mlistp = new MutableLiveData<>();
     private ParcelDao parcelsDao;
-    private DatabaseReference parcelsRef;
+    FirebaseDatabase firebaseDatabase;
+//    private DatabaseReference parcelsRef;
     private ArrayList<Parcel> parcelList= new ArrayList<Parcel>() ;
 
     public ParcelRepository(Application application) {
         ParcelDataBase database = ParcelDataBase.getInstance(application);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+         firebaseDatabase = FirebaseDatabase.getInstance();
         //mlistp = new MutableLiveData<List<Parcel>>();
-        parcelsRef = firebaseDatabase.getReference("parcels");
-        parcelsRef.addValueEventListener(new ValueEventListener() {
+         DatabaseReference parcelsRef = firebaseDatabase.getReference("parcels");
+        parcelsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 parcelList.clear();
@@ -49,70 +50,20 @@ public class ParcelRepository {
                 else {
                     mlistp = new MutableLiveData<List<Parcel>>();
 
-                    String[] ad = {"US, somewhere 99", "אשדוד, זרובבל 8","ירושלים, בגין 10"};
-                    String[] names = {"ראובן","שמעון","לוי","יהודה","ישככר"};
-                    String[] phone = {"0501231321","0529879879","0504566780"};
-                    String[] emails = {"exemple1@gmail.com","someone89@walla.co.il","no-one00@gmail.com"};
-                    Parcel.ParcelKind[] parcelKinds = {Parcel.ParcelKind.BIG_PARCEL, Parcel.ParcelKind.ENVELOPE, Parcel.ParcelKind.LITTEL_PARCEL};
-                    Parcel.ParcelStatus[] parcelStatus = {Parcel.ParcelStatus.ACCEPT, Parcel.ParcelStatus.HAVE_DELIVER, Parcel.ParcelStatus.ON_WAY, Parcel.ParcelStatus.WAIT};
-                    Parcel.Weight[] weights = {Parcel.Weight.LESS_THEN_5_KG, Parcel.Weight.LESS_THEN_20_KG, Parcel.Weight.LESS_THEN_500_G, Parcel.Weight.LESS_THEN_KG};
-                    boolean[] fragails = {true,false};
-                    Location l =new Location("");
-                    l.setLatitude(31.765739);
-                    l.setLongitude(35.191110);
-                    ParcelBuilder p = new ParcelBuilder();
-                    for (int i=0;i<10;i++) {
-                        p.setAddress(ad[i % ad.length]);
-                        p.setName(names[i % names.length]);
-                        p.setPhone(phone[i % phone.length]);
-                        p.setEmail(emails[i % emails.length]);
-                        p.setParcelKind(parcelKinds[i % parcelKinds.length]);
-                        p.setParcelStatus(parcelStatus[i % parcelStatus.length]);
-                        p.setW(weights[i % weights.length]);
-                        p.setIsFragile(fragails[i % fragails.length]);
-                        p.setLocation(l);
-                        parcelList.add(p.createParcel());
+
                     }
 
-                    mlistp.setValue(parcelList);
                 }
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                mlistp = new MutableLiveData<List<Parcel>>();
 
-                String[] ad = {"US, somewhere 99", "אשדוד, זרובבל 8","ירושלים, בגין 10"};
-                String[] names = {"ראובן","שמעון","לוי","יהודה","ישככר"};
-                String[] phone = {"0501231321","0529879879","0504566780"};
-                String[] emails = {"exemple1@gmail.com","someone89@walla.co.il","no-one00@gmail.com"};
-                Parcel.ParcelKind[] parcelKinds = {Parcel.ParcelKind.BIG_PARCEL, Parcel.ParcelKind.ENVELOPE, Parcel.ParcelKind.LITTEL_PARCEL};
-                Parcel.ParcelStatus[] parcelStatus = {Parcel.ParcelStatus.ACCEPT, Parcel.ParcelStatus.HAVE_DELIVER, Parcel.ParcelStatus.ON_WAY, Parcel.ParcelStatus.WAIT};
-                Parcel.Weight[] weights = {Parcel.Weight.LESS_THEN_5_KG, Parcel.Weight.LESS_THEN_20_KG, Parcel.Weight.LESS_THEN_500_G, Parcel.Weight.LESS_THEN_KG};
-                boolean[] fragails = {true,false};
-                Location l =new Location("");
-                l.setLatitude(31.765739);
-                l.setLongitude(35.191110);
-                ParcelBuilder p = new ParcelBuilder();
-                for (int i=0;i<10;i++) {
-                    p.setAddress(ad[i % ad.length]);
-                    p.setName(names[i % names.length]);
-                    p.setPhone(phone[i % phone.length]);
-                    p.setEmail(emails[i % emails.length]);
-                    p.setParcelKind(parcelKinds[i % parcelKinds.length]);
-                    p.setParcelStatus(parcelStatus[i % parcelStatus.length]);
-                    p.setW(weights[i % weights.length]);
-                    p.setIsFragile(fragails[i % fragails.length]);
-                    p.setLocation(l);
-                    parcelList.add(p.createParcel());
-                }
-
-                mlistp.setValue(parcelList);
             }
         });
       //  getHistoryParcels();
-       // generateRandomParcels(parcelsRef);
+     //   generateRandomParcels(parcelsRef);
      //   parcelsDao = database.parcelDao();
 
       //  allParcels = parcelsDao.getAllParcels();
@@ -142,8 +93,9 @@ public class ParcelRepository {
             p.setW(weights[i%weights.length]);
             p.setIsFragile(fragails[i%fragails.length]);
             p.setLocation(l);
-            parcelsRef.push().setValue(p.createParcel());
+            parcelList.add(p.createParcel());
         }
+        mlistp.setValue(parcelList);
 
     }
 
@@ -152,6 +104,7 @@ public class ParcelRepository {
 
     }
     public void getHistoryParcels(){
+        DatabaseReference parcelsRef = firebaseDatabase.getReference("parcels");
         parcelsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
