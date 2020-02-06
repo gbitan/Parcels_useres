@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ParcelRepository {
 
-   // private final LiveData<List<Parcel>> allParcels;
+    private final LiveData<List<Parcel>> allParcels;
     private  MutableLiveData<List<Parcel>> mlistp = new MutableLiveData<>();
     private ParcelDao parcelsDao;
     FirebaseDatabase firebaseDatabase;
@@ -41,7 +41,7 @@ public class ParcelRepository {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Parcel parcel = snapshot.getValue(Parcel.class);
-                        parcelList.add(parcel);
+                        insert(parcel);
                     }
 
                     mlistp = new MutableLiveData<List<Parcel>>();
@@ -63,10 +63,10 @@ public class ParcelRepository {
             }
         });
       //  getHistoryParcels();
-     //   generateRandomParcels(parcelsRef);
-     //   parcelsDao = database.parcelDao();
-
-      //  allParcels = parcelsDao.getAllParcels();
+ //       generateRandomParcels(parcelsRef);
+        parcelsDao = database.parcelDao();
+//mlistp=parcelsDao.getAllParcels();
+        allParcels = parcelsDao.getAllParcels();
     }
 
     private void generateRandomParcels(DatabaseReference parcelsRef) {
@@ -93,6 +93,9 @@ public class ParcelRepository {
             p.setW(weights[i%weights.length]);
             p.setIsFragile(fragails[i%fragails.length]);
             p.setLocation(l);
+            Parcel parcel = p.createParcel();
+            parcel.setId(-10-i*2);
+            insert(parcel);
             parcelList.add(p.createParcel());
         }
         mlistp.setValue(parcelList);
@@ -126,7 +129,7 @@ public class ParcelRepository {
     }
 
   public LiveData<List<Parcel>> getAllParcels() {
-        return mlistp;
+        return allParcels;
     }
 
 

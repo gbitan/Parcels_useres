@@ -20,13 +20,15 @@ public class Parcel {
     private ParcelStatus parcelStatus;
 
     public Parcel(){
+        id=0;
         location = new Location("");
     }
 
 
     public Parcel(ParcelKind parcelKind, boolean isFragile, Weight w, Location location,
                   String name, String address, String phone, String email, ParcelStatus parcelStatus) {
-        id=-1;
+
+        id=0;
         this.parcelKind = parcelKind;
         this.isFragile = isFragile;
         this.w = w;

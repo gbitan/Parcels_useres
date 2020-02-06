@@ -8,15 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="7dp">
+        android:padding="7dp"
+        android:fadingEdge="vertical"
+        android:paddingVertical="@dimen/cardview_default_radius">
 
 
         <TextView
-            android:id="@+id/text_view_status"
+            android:id="@+id/text_view_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Atif Aslam"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
 
         <TextView
             android:id="@+id/text_view_weight"
@@ -34,11 +37,18 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
         <TextView
-            android:id="@+id/text_view_name"
+            android:id="@+id/text_view_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Age: 27"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/text_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id: 27"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
 
     </LinearLayout>

@@ -40,6 +40,8 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
         holder.textViewStatus.setText(parcel.getParcelStatus().name());
         holder.textViewType.setText(parcel.getParcelKind().name());
         holder.textViewWeight.setText(parcel.getW().name());
+        holder.textViewName.setText(parcel.getName());
+        holder.textViewId.setText(parcel.getEmail());
      //   holder.textViewAdress.setText(Utils.getPlace(baseContext, parcel.getLocation()));
     }
 
@@ -58,7 +60,7 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
     }
 
     public class ParcelHolder extends RecyclerView.ViewHolder {
-        TextView textViewStatus, textViewType, textViewWeight, textViewAdress;
+        TextView textViewStatus, textViewType, textViewWeight, textViewAdress,textViewName,textViewId;
         ImageView imageViewType;
 
         public ParcelHolder(@NonNull View itemView) {
@@ -66,8 +68,9 @@ public class ParcelsAdapter extends RecyclerView.Adapter<ParcelsAdapter.ParcelHo
             textViewStatus = itemView.findViewById(R.id.text_view_status);
             // imageViewType = itemView.findViewById(R.id.image_view_type);
             textViewWeight = itemView.findViewById(R.id.text_view_weight);
-         //   textViewAdress = itemView.findViewById(R.id.text_view_Adress);
+            textViewName = itemView.findViewById(R.id.text_view_name);
             textViewType = itemView.findViewById(R.id.text_view_type);
+            textViewId = itemView.findViewById(R.id.text_view_id);
         }
     }
 }
