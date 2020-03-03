@@ -1,5 +1,6 @@
 package com.example.parcels_useres;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +29,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent myIntent = getIntent();
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
