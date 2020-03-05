@@ -18,10 +18,12 @@ public class Parcel {
     private String phone;
     private String email;
     private ParcelStatus parcelStatus;
+    private String applyFriends;
 
     public Parcel(){
         id=0;
         location = new Location("");
+        applyFriends="";
     }
 
 
@@ -38,6 +40,7 @@ public class Parcel {
         this.phone = phone;
         this.email = email;
         this.parcelStatus = parcelStatus;
+        this.applyFriends="";
     }
 
 
@@ -138,6 +141,13 @@ public class Parcel {
         this.id = id;
     }
 
+    public String getApplyFriends() {
+        return applyFriends;
+    }
+
+    public void setApplyFriends(String applyFriends) {
+        this.applyFriends = applyFriends;
+    }
 
     public enum Weight {
         LESS_THEN_500_G,LESS_THEN_KG,LESS_THEN_5_KG,LESS_THEN_20_KG;

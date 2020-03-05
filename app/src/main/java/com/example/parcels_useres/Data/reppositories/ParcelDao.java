@@ -30,4 +30,14 @@ public  interface ParcelDao {
     @Query("SELECT * FROM parcel_table ORDER BY name DESC")
     LiveData<List<Parcel>> getAllParcels();
 
+    @Query("SELECT * FROM parcel_table Where email = :email And parcelStatus = 3 ORDER BY name DESC")
+    LiveData<List<Parcel>> getAllMyParcels(String email);
+
+
+    @Query("SELECT * FROM parcel_table Where email = :email And parcelStatus != 3 ORDER BY name DESC")
+    LiveData<List<Parcel>> getParcelsByEmail(String email);
+
+    @Query("SELECT * FROM parcel_table Where email != :email And parcelStatus = 0 ORDER BY name DESC")
+    LiveData<List<Parcel>> getParcelsOfOthers(String email);
+
 }

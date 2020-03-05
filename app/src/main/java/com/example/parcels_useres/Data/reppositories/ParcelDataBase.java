@@ -14,7 +14,7 @@ import com.example.parcels_useres.Data.models.Converters;
 import com.example.parcels_useres.Data.models.Parcel;
 
 
-    @Database(entities = {Parcel.class}, version = 2,exportSchema = false)
+    @Database(entities = {Parcel.class}, version = 3,exportSchema = false)
     @TypeConverters({Converters.class})
     public abstract class ParcelDataBase extends RoomDatabase {
 

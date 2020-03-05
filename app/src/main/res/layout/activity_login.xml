@@ -40,7 +40,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="don't have a user? click here"
-        />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3555F1" />
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

@@ -9,41 +9,34 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.parcels_useres.Data.models.Parcel;
 import com.example.parcels_useres.Data.models.ParcelBuilder;
+import com.example.parcels_useres.Data.reppositories.ParcelRepository;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.List;
 
 public class HomeViewModel extends AndroidViewModel {
-  /*  private ParcelRepository repository;
-    private LiveData<List<Parcel>> mParcels;
-    private MutableLiveData<String> mText;
-
-    public HomeViewModel(@NonNull Application application) {
-        super(application);
-        repository=new ParcelRepository(getApplication());
-        mParcels = repository.getAllParcels();
-        mText = new MutableLiveData<>();
-          mText.setValue((mParcels.getValue()).get(0).getName());
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }*/
-
-  //    -------------test-----------
+  private ParcelRepository repository;
+  private LiveData<List<Parcel>> mParcels;
   private MutableLiveData<String> mText;
 
-    public HomeViewModel(@NonNull Application application) {
-      super(application);
-        mText = new MutableLiveData<>();
-        Parcel p = new ParcelBuilder().createParcel();
-        p.setName("avi");
-        p.setEmail("avi@exemple.com");
-        p.setFragile(true);
-        p.setId(1);
-        p.setParcelKind(Parcel.ParcelKind.BIG_PARCEL);
-        p.setParcelStatus(Parcel.ParcelStatus.ON_WAY);
-        p.setW(Parcel.Weight.LESS_THEN_5_KG);
-        mText.setValue(p.getName());
+  private FirebaseUser user;
+  public HomeViewModel(@NonNull Application application) {
+    super(application);
+    repository=new ParcelRepository(getApplication());
+    user = FirebaseAuth.getInstance().getCurrentUser();
+
+    mParcels = repository.getParcelsOfOthers(user.getEmail());
+    mText = new MutableLiveData<>();
+    if (mParcels.getValue() != null)
+      mText.setValue((mParcels.getValue()).get(0).getName());
+    else
+      mText.setValue("no parcels found");
   }
-    public LiveData<String> getText() {
-        return mText;
-    }
+
+
+
+  public LiveData<List<Parcel>> getParcels() {
+    return mParcels;
+  }
 }

@@ -8,10 +8,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_MyParcels">MyParcels</string>
-    <string name="menu_FriendsParcels">FriendsParcels</string>
-    <string name="menu_History">History</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_MyParcels">My Parcels</string>
+    <string name="menu_FriendsParcels">Friends Parcels</string>
+    <string name="menu_History">My old parcels</string>
+    <string name="menu_tools">All the parcels</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_login">Login</string>

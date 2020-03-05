@@ -14,6 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,22 +27,30 @@ import android.view.Menu;
 public class NavigationDrawerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    FirebaseUser user;
+    String name="" ,email="" ,uid="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent myIntent = getIntent();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        boolean emailVerified;
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            name = user.getDisplayName();
+            email = user.getEmail();
+            // Uri photoUrl = user.getPhotoUrl();
+            // Check if user's email is verified
+            emailVerified = user.isEmailVerified();
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            uid = user.getUid();
+        }
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
